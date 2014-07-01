@@ -1,0 +1,60 @@
+
+    @model ElectroMart.Models.Product
+
+    	@{
+            Layout = "~/Views/Shared/_Layout.cshtml";
+		}
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Electra Mart</p>
+                <div class="list-group">
+                    <a href="~/Product/SearchResult?category=Computers" class="list-group-item">Laptops/Desktop Computers </a>
+                    <a href="~/Product/SearchResult?category=Accessories" class="list-group-item">Accessories</a>
+                    <a href="~/Product/SearchResult?category=Mobiles" class="list-group-item">Mobiles/Tabs</a>
+                </div>
+            </div>
+
+            <div class="col-md-9" id="row">
+                    <div class="thumbnail">
+                    <img class="img-responsive" src="~/Images/@Model.Picture" alt="">
+                    <div class="caption-full">
+                        <h4 class="pull-right">@Model.Price</h4>
+                        <h4><a href="/Product/shop_item?item_id=@Model.Id">@Model.Name</a>
+                            </h4><h6 class="pull-right"><a href="~/Product/Add_to_cart?item_id=@Model.Id">ADD TO CART</a></h6>
+                        <!--/h4-->
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    
+
+@*<script>
+    $(document).ready(function () {
+        $('#submit').click(function () {
+            alert("Muhammad Hassan");
+            var text = $('#search').val();
+            if (text == '') {
+            }
+            else {
+                $.getJSON("/Product/SearchBar?searchtext=" + text, function (data) {
+                    var arr_list = [];
+                    $('#row').empty();
+
+                    $.each(data, function (i, x) {
+                        $('#row').append("@Html.Partial("SideMenu")<div class='col-sm-4 col-lg-4 col-md-4'><div class='thumbnail'><img src='" + x.Picture + "' alt=''><div class='caption'><h4 class='pull-right'>" + x.Price + "</h4><h4><a href='/Product/shop_item?item_id=" + x.Id + "'>" + x.Name + "</a></h4></h4><h4 class='pull-right'><a href='/Home/Cart?item_id=" + x.Id + "'>Add to Cart</a></h4><p>" + x.Description + "</p></div></div></div>");
+                    });
+                });
+            }
+        });
+    });
+</script>*@
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
